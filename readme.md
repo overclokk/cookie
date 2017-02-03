@@ -12,7 +12,7 @@ Get and set cookies in PHP with ease.
 
 Install this package through Composer:
 
-    `composer require overclokk/cookie`
+    composer require overclokk/cookie
 
 ## PHP Implementation
 
@@ -40,22 +40,22 @@ or
 This will return `null` if the cookie doesn't exist or is expired.
 
 ```php
-    $cookieValue = $cookie->get( 'cookieName' );
+    $cookie_value = $cookie->get( 'cookie_name' );
 ```
 
 ### Store a cookie for a limited time
 
-If you don't specify `$minutesValid`, a default of 0 will be used.
+If you don't specify `$minutes`, a default of 0 will be used.
 
 ```php
-    $minutesValid = 120 * 60;
-    $cookie->set( 'cookieName', 'cookieValue', $minutesValid );
+    $minutes = 120 * 60;
+    $cookie->set( 'cookie_name', 'cookie_value', $minutes );
 ```
 
 ### Store a cookie forever
 
 ```php
-    $cookie->forever( 'cookieName', 'cookieValue' );
+    $cookie->forever( 'cookie_name', 'cookie_value' );
 ```
 
 ### Delete a cookie
@@ -63,5 +63,5 @@ If you don't specify `$minutesValid`, a default of 0 will be used.
 If the cookie doesn't exist, nothing will happen...
 
 ```php
-    $cookie->delete('cookieName');
+    $cookie->delete('cookie_name');
 ```
