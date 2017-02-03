@@ -1,0 +1,21 @@
+{
+    "name": "overclokk/cookie",
+    "description": "A simple and light cookie manager class",
+    "require-dev": {
+        "lucatume/wp-browser": "^1.19"
+    },
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "overclokk",
+            "email": "info@overclokk.net"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Overclokk\\Cookie\\": "src/"
+        }
+    }
+}
