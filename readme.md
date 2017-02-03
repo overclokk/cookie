@@ -52,7 +52,7 @@ If you don't specify `$minutes`, a default of 0 will be used.
     $cookie->set( 'cookie_name', 'cookie_value', $minutes );
 ```
 
-### Store a cookie forever
+### Set a cookie forever
 
 ```php
     $cookie->forever( 'cookie_name', 'cookie_value' );
