@@ -8,6 +8,8 @@
 
 Get and set cookies in PHP with ease.
 
+PHP >= 5.3
+
 ## Installation
 
 Install this package through Composer:
