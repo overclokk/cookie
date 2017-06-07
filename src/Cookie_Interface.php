@@ -49,16 +49,11 @@ interface Cookie_Interface {
 	public function set( $name, $value, $expire = 0, $path = null, $domain = null, $secure = null, $httponly = null );
 
 	/**
-	 * Delete Cookie
-	 *
-	 * @param  string $cookie_name Cookie name.
-	 */
-	/**
 	 * Delete a cookie
 	 *
-	 * @param string $name
+	 * @param string $name Cookie name.
 	 *
-	 * @return bool
+	 * @return bool        @see Interface::set();
 	 */
 	public function delete( $name );
 }

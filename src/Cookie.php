@@ -9,7 +9,9 @@
  * @link www.overclokk,net
  * @since 1.0.0
  *
- * @package Overclokk
+ * @version 1.0.1
+ *
+ * @package Overclokk\Cookie
  */
 
 namespace Overclokk\Cookie;
@@ -100,21 +102,21 @@ class Cookie implements Cookie_Interface {
 	 *                      it will return TRUE. This does not indicate whether the
 	 *                      user accepted the cookie. 
 	 */
-	public function forever( $name, $value, $expire = 31536000 * 5 ) {
+	public function forever( $name, $value, $expire = 0 ) {
+		
+		if ( 0 === $expire ) {
+			$expire = 31536000 * 5;
+		}
+
 		return $this->set( $name, $value, $expire );
 	}
 
 	/**
-	 * Delete Cookie
-	 *
-	 * @param  string $cookie_name Cookie name.
-	 */
-	/**
 	 * Delete a cookie
 	 *
-	 * @param string $name
+	 * @param string $name Cookie name.
 	 *
-	 * @return bool
+	 * @return bool        @see Class::set();
 	 */
 	public function delete( $name ) {
 		unset( $this->cookie[ $name ] ); // Input var okay.
