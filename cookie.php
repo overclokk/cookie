@@ -5,8 +5,8 @@
  * Plugin URI: http://www.overclokk.net
  * Author: Enea Overclokk
  * Author URI: http://www.overclokk.net
- * Version: 1.0.1
- * License: GPL2
+ * Version: 1.0.2
+ * License: GPL-2.0+
  * Text Domain: cookie
  * Domain Path: cookie
  */
@@ -30,7 +30,7 @@
 */
 
 /**
- * This plugin doesn't nothing, the only purpose is to test in a WordPress enviroment, load it with composer in your project instead.
+ * This file does nothing, the only purpose is to test in a WordPress enviroment, load it with composer in your project instead.
  */
 // require( __DIR__ . '/src/Cookie.php' );
 // require( __DIR__ . '/src/Cookie_Interface.php' );

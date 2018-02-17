@@ -4,7 +4,7 @@
     "require-dev": {
         "lucatume/wp-browser": "^1.19"
     },
-    "license": "GPLv2",
+    "license": "GPL-2.0+",
     "authors": [
         {
             "name": "overclokk",
