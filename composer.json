@@ -1,10 +1,16 @@
 {
     "name": "overclokk/cookie",
     "description": "A simple and light cookie manager class",
-    "require-dev": {
-        "lucatume/wp-browser": "^1.19"
+    "require": {
+        "php": ">=7.4"
     },
-    "license": "GPL-2.0+",
+    "require-dev": {
+        "symplify/easy-coding-standard": "^12.5",
+        "rector/rector": "^2.0",
+        "lucatume/wp-browser": "<3.5",
+        "codeception/module-asserts": "^1.0"
+    },
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "overclokk",
@@ -12,7 +18,6 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
     "autoload": {
         "psr-4": {
             "Overclokk\\Cookie\\": "src/"
