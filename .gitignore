@@ -1,3 +1,6 @@
+
 vendor/
-_vendor/
+tests/_support/_generated/
+
+*.lock
 codeception.yml
