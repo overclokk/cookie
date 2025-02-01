@@ -27,14 +27,14 @@ jobs:
       - run: cp .build/composer-74.json composer.json
 
       # clear the dev files
-      - run: rm -rf .build .docker .github tests ecs.php .gitattributes .gitignore codeception.dist.yml example.php rectors.php
+      - run: rm -rf .build .docker .github tests vendor ecs.php .gitattributes .gitignore codeception.dist.yml example.php rectors.php
 
       # setup git user to avoid error "Author identity unknown: *** Please tell me who you are."
       - run: |
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
 
-      # publish to the same repository with a new tag
+      # publish to the same repository and overwrite the tag
       - name: "Tag Downgraded Code"
         run: |
           git add --all
