@@ -7,6 +7,8 @@ use Rector\Set\ValueObject\DowngradeLevelSetList;
 
 return RectorConfig::configure()
     ->withPaths([
+        // We need to go up one level to get to the root of the package
+        // So we can omit declaring the path on the vendor/bin/rector process
         __DIR__ . '/../src',
         __DIR__ . '/../examples.php',
     ])
