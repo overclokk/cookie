@@ -54,10 +54,12 @@ final class CookieTest extends Unit
         $this->assertEquals(self::$value, $this->cookie->get(self::$name), "Cookie doesn't set.");
     }
 
+    // phpcs:ignore
     protected function _before(): void
     {
     }
 
+    // phpcs:ignore
     protected function _after(): void
     {
     }

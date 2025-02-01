@@ -38,7 +38,15 @@ interface CookieInterface extends Cookie_Interface
      *                         it will return TRUE. This does not indicate whether the
      *                         user accepted the cookie.
      */
-    public function set(string|int $name, $value, $expire = 0, $path = null, $domain = null, $secure = null, $httponly = null): bool;
+    public function set(
+        string|int $name,
+        $value,
+        $expire = 0,
+        $path = null,
+        $domain = null,
+        $secure = null,
+        $httponly = null
+    ): bool;
 
     /**
      * Delete a cookie

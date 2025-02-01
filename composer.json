@@ -8,7 +8,10 @@
         "symplify/easy-coding-standard": "^12.5",
         "rector/rector": "^2.0",
         "codeception/codeception": "^5.1",
-        "codeception/module-asserts": "^3.0"
+        "codeception/module-asserts": "^3.0",
+        "squizlabs/php_codesniffer": "^3.11",
+        "phpcompatibility/php-compatibility": "dev-develop",
+        "dealerdirect/phpcodesniffer-composer-installer": "^v1.0"
     },
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -29,5 +32,51 @@
             "Overclokk\\Cookie\\Tests\\": "tests/src/",
             "Overclokk\\Cookie\\Tests\\Unit\\": "tests/unit/"
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "qa": [
+            "@cs",
+            "@unit",
+            "@clean",
+            "@examples"
+        ],
+        "tests": [
+            "@unit"
+        ],
+        "cs": [
+            "@php vendor/bin/phpcs"
+        ],
+        "cs:fix": [
+            "@php vendor/bin/phpcbf"
+        ],
+        "compat": [
+            "@php vendor/bin/phpcs -p ./src/ --standard=PHPCompatibility --runtime-set testVersion 8.3"
+        ],
+        "unit": [
+            "@php vendor/bin/codecept run unit"
+        ],
+        "unit:debug": [
+            "@php vendor/bin/codecept run unit --debug"
+        ],
+        "clean": [
+            "@php vendor/bin/codecept clean"
+        ],
+        "rector": [
+            "@php vendor/bin/rector process --dry-run"
+        ],
+        "rector:fix": [
+            "@php vendor/bin/rector process"
+        ],
+        "rector:downgrade": [
+            "@php vendor/bin/rector process --config=.build/rector-74.php"
+        ],
+        "examples": [
+            "@php examples.php"
+        ]
     }
 }
