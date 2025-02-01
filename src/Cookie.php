@@ -2,26 +2,12 @@
 
 declare(strict_types=1);
 
-/**
- * Cookie Manager API
- *
- * This is a simple and light cookie manager class
- *
- * @link http://php.net/manual/en/function.setcookie.php
- *
- * @link www.overclokk,net
- * @since 1.0.0
- *
- * @version 1.0.1
- *
- * @package Overclokk\Cookie
- */
 namespace Overclokk\Cookie;
 
 /**
- * Cookie API
+ * @link http://php.net/manual/en/function.setcookie.php
  */
-class Cookie implements CookieInterface, Cookie_Interface
+class Cookie implements CookieInterface
 {
     /**
      * $_COOKIE global variable
@@ -41,35 +27,35 @@ class Cookie implements CookieInterface, Cookie_Interface
     /**
      * Get the value of a cookie
      *
-     * @param string $name The cookie name.
+     * @param string|int $name The cookie name.
      *
      * @return null|string Return the cookie value
      */
-    public function get($name): ?string
+    public function get(string|int $name): ?string
     {
-        if (!isset($this->cookie[ $name ])) { // Input var okay.
+        if (! isset($this->cookie[$name])) { // Input var okay.
             return null;
         }
 
-        return strip_tags(stripslashes($this->cookie[ $name ])); // Input var okay.
+        return \strip_tags(\stripslashes((string) $this->cookie[$name])); // Input var okay.
     }
 
     /**
      * Set cookie
      *
-     * @param string $name     The cookie name.
-     * @param string $value    The cookie value.
-     * @param int    $expire   Expiration time in seconds.
-     * @param string $path     The path on the server in which the cookie will be available on.
+     * @param string|int $name The cookie name.
+     * @param string $value The cookie value.
+     * @param int $expire Expiration time in seconds.
+     * @param null $path The path on the server in which the cookie will be available on.
      *                         If set to '/', the cookie will be available within the
      *                         entire domain. If set to '/foo/', the cookie will only be
      *                         available within the /foo/ directory and all sub-directories
      *                         such as /foo/bar/ of domain. The default value is the current
      *                         directory that the cookie is being set in.
-     * @param string $domain   The (sub)domain that the cookie is available to.
-     * @param bool   $secure   Indicates that the cookie should only be transmitted over
+     * @param null $domain The (sub)domain that the cookie is available to.
+     * @param null $secure Indicates that the cookie should only be transmitted over
      *                         a secure HTTPS connection from the client.
-     * @param bool   $httponly When TRUE the cookie will be made accessible only through
+     * @param null $httponly When TRUE the cookie will be made accessible only through
      *                         the HTTP protocol.
      *
      * @return bool            If output exists prior to calling this function, setcookie()
@@ -77,25 +63,30 @@ class Cookie implements CookieInterface, Cookie_Interface
      *                         it will return TRUE. This does not indicate whether the
      *                         user accepted the cookie.
      */
-    public function set($name, $value, $expire = 0, $path = null, $domain = null, $secure = null, $httponly = null): bool
-    {
+    public function set(
+        string|int $name,
+        $value,
+        $expire = 0,
+        $path = null,
+        $domain = null,
+        $secure = null,
+        $httponly = null
+    ): bool {
         return \setcookie(
-            $name,
-            (string)$value,
+            (string) $name,
+            (string) $value,
             [
-                'expires' => $this->calculate_expiration_time($expire),
+                'expires' => $this->calculateExpirationTime($expire),
                 'path' => $path,
                 'domain' => $domain,
                 'secure' => $secure,
-                'httponly' => $httponly
+                'httponly' => $httponly,
             ]
         );
     }
 
     /**
      * Store a cookie for a long, long time.
-     *
-     * @author https://github.com/codezero-be
      *
      * @param string $name  The cookie name.
      * @param string $value The cookie value.
@@ -105,9 +96,9 @@ class Cookie implements CookieInterface, Cookie_Interface
      *                      it will return TRUE. This does not indicate whether the
      *                      user accepted the cookie.
      */
-    public function forever($name, $value, $expire = 0)
+    public function forever(string|int $name, string $value, $expire = 0): bool
     {
-        if (0 === $expire) {
+        if ($expire === 0) {
             $expire = 31536000 * 5;
         }
 
@@ -121,21 +112,19 @@ class Cookie implements CookieInterface, Cookie_Interface
      *
      * @return bool        @see Class::set();
      */
-    public function delete($name)
+    public function delete(string|int $name): bool
     {
-        unset($this->cookie[ $name ]); // Input var okay.
+        unset($this->cookie[$name]); // Input var okay.
         return $this->set($name, null, time() - 15 * 60);
     }
 
     /**
      * Calculate the expiration time
      *
-     * @author https://github.com/codezero-be
-     *
-     * @param  int $expire The espiration time
+     * @param int $expire The espiration time
      */
-    private function calculate_expiration_time($expire = 0): int
+    private function calculateExpirationTime(int $expire = 0): int
     {
-        return intval($expire > 0 ? time() + $expire : -1);
+        return $expire > 0 ? time() + $expire : -1;
     }
 }

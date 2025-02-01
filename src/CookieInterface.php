@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Overclokk\Cookie;
 
-interface CookieInterface
+interface CookieInterface extends Cookie_Interface
 {
     /**
      * Get the value of a cookie
@@ -13,7 +13,7 @@ interface CookieInterface
      *
      * @return null|string Return the cookie value
      */
-    public function get($name);
+    public function get(string|int $name): ?string;
 
     /**
      * Set cookie
@@ -38,7 +38,7 @@ interface CookieInterface
      *                         it will return TRUE. This does not indicate whether the
      *                         user accepted the cookie.
      */
-    public function set($name, $value, $expire = 0, $path = null, $domain = null, $secure = null, $httponly = null);
+    public function set(string|int $name, $value, $expire = 0, $path = null, $domain = null, $secure = null, $httponly = null): bool;
 
     /**
      * Delete a cookie
@@ -47,5 +47,5 @@ interface CookieInterface
      *
      * @return bool        @see Interface::set();
      */
-    public function delete($name);
+    public function delete(string|int $name): bool;
 }

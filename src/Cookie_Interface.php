@@ -9,9 +9,8 @@ declare(strict_types=1);
  *
  * @link www.overclokk.met
  * @since 1.0.0
- *
- * @package Overclokk\Cookie
  */
+
 namespace Overclokk\Cookie;
 
 interface Cookie_Interface

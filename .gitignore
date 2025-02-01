@@ -1,6 +1,8 @@
 
 vendor/
-tests/_support/_generated/
+tests/src/Support/_generated/
 
 *.lock
 codeception.yml
+Makefile
+bone*

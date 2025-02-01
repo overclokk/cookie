@@ -8,6 +8,12 @@ return RectorConfig::configure()
     ->withPaths([
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/ecs.php',
+        __DIR__ . '/examples.php',
+        __DIR__ . '/rector.php',
+    ])
+    ->withSkip([
+        __DIR__ . '/tests/src/Support/_generated',
     ])
     // uncomment to reach your current PHP version
     ->withPhpSets()

@@ -2,30 +2,19 @@
 
 declare(strict_types=1);
 
+namespace Overclokk\Cookie\Tests\Unit;
+
 use Codeception\Test\Unit;
 use Overclokk\Cookie\Cookie;
 use Overclokk\Cookie\Cookie_Interface;
 
-class CookieTest extends Unit
+final class CookieTest extends Unit
 {
-    protected UnitTester $tester;
+    public $cookie;
 
     private static string $name = 'test';
 
     private static string $value = 'value';
-    
-    protected function _before()
-    {
-    }
-
-    protected function _after()
-    {
-    }
-
-    private function makeSut(): Cookie
-    {
-        return new Cookie();
-    }
 
     public function testItShouldBeInstanceOfCookieInterface(): void
     {
@@ -59,7 +48,22 @@ class CookieTest extends Unit
 
     public function testGetItShouldBeReturnSelfValue(): void
     {
-        $this->cookie = new Overclokk\Cookie\Cookie([ self::$name => self::$value ]);
+        $this->cookie = new Cookie([
+            self::$name => self::$value,
+        ]);
         $this->assertEquals(self::$value, $this->cookie->get(self::$name), "Cookie doesn't set.");
+    }
+
+    protected function _before(): void
+    {
+    }
+
+    protected function _after(): void
+    {
+    }
+
+    private function makeSut(): Cookie
+    {
+        return new Cookie();
     }
 }

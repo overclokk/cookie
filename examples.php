@@ -13,3 +13,8 @@ $cookie = new Cookie($_COOKIE);
 $cookieValue = $cookie->get($cookieName);
 
 \var_dump($cookieValue === $_COOKIE[$cookieName]);
+
+$cookie->set($cookieName, 'new_cookie_value');
+$cookieValue = $cookie->get($cookieName);
+
+\var_dump($cookieValue === $_COOKIE[$cookieName]);
