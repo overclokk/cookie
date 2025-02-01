@@ -20,11 +20,11 @@ jobs:
       - uses: "ramsey/composer-install@v3"
 
       # downgrade /src to PHP 7.4
-      - run: vendor/bin/rector process --config build/rector-74.php --ansi
+      - run: vendor/bin/rector process --config .build/rector-74.php --ansi
       - run: vendor/bin/ecs --fix --ansi
 
       # copy PHP 7.4 composer
-      - run: cp build/composer-74.json composer.json
+      - run: cp .build/composer-74.json composer.json
 
       # clear the dev files
       - run: rm -rf .build .docker .github tests ecs.php .gitattributes .gitignore codeception.dist.yml example.php rectors.php
