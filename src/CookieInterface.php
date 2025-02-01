@@ -13,7 +13,7 @@ interface CookieInterface extends Cookie_Interface
      *
      * @return null|string Return the cookie value
      */
-    public function get(string|int $name): ?string;
+    public function get($name): ?string;
 
     /**
      * Set cookie
@@ -39,7 +39,7 @@ interface CookieInterface extends Cookie_Interface
      *                         user accepted the cookie.
      */
     public function set(
-        string|int $name,
+        $name,
         $value,
         $expire = 0,
         $path = null,
@@ -55,5 +55,5 @@ interface CookieInterface extends Cookie_Interface
      *
      * @return bool        @see Interface::set();
      */
-    public function delete(string|int $name): bool;
+    public function delete($name): bool;
 }
