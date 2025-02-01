@@ -22,6 +22,7 @@ jobs:
       # downgrade /src to PHP 7.4
       - run: vendor/bin/rector process --config .build/rector-74.php --ansi
       - run: vendor/bin/ecs --fix --ansi
+      - run: vendor/bin/phpcs -p ./src/ --standard=PHPCompatibility --runtime-set testVersion 7.4
 
       # copy PHP 7.4 composer
       - run: cp .build/composer-74.json composer.json
