@@ -28,7 +28,7 @@ jobs:
       - run: cp .build/composer-74.json composer.json
 
       # clear the dev files
-      - run: rm -rf .build .docker .github tests vendor ecs.php .gitattributes .gitignore codeception.dist.yml example.php rectors.php
+      - run: rm -rf .build .docker .github tests vendor ecs.php phpcs.xml .gitattributes .gitignore codeception.dist.yml composer.lock examples.php rector.php
 
       # setup git user to avoid error "Author identity unknown: *** Please tell me who you are."
       - run: |
