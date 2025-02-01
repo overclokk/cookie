@@ -31,7 +31,7 @@ class Cookie implements CookieInterface
      *
      * @return null|string Return the cookie value
      */
-    public function get(string|int $name): ?string
+    public function get($name): ?string
     {
         if (! isset($this->cookie[$name])) { // Input var okay.
             return null;
@@ -64,7 +64,7 @@ class Cookie implements CookieInterface
      *                         user accepted the cookie.
      */
     public function set(
-        string|int $name,
+        $name,
         $value,
         $expire = 0,
         $path = null,
@@ -96,7 +96,7 @@ class Cookie implements CookieInterface
      *                      it will return TRUE. This does not indicate whether the
      *                      user accepted the cookie.
      */
-    public function forever(string|int $name, string $value, $expire = 0): bool
+    public function forever($name, string $value, $expire = 0): bool
     {
         if ($expire === 0) {
             $expire = 31536000 * 5;
@@ -112,7 +112,7 @@ class Cookie implements CookieInterface
      *
      * @return bool        @see Class::set();
      */
-    public function delete(string|int $name): bool
+    public function delete($name): bool
     {
         unset($this->cookie[$name]); // Input var okay.
         return $this->set($name, null, time() - 15 * 60);

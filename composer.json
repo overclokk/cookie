@@ -2,13 +2,7 @@
     "name": "overclokk/cookie",
     "description": "A simple and light cookie manager class",
     "require": {
-        "php": ">=8.3"
-    },
-    "require-dev": {
-        "symplify/easy-coding-standard": "^12.5",
-        "rector/rector": "^2.0",
-        "codeception/codeception": "^5.1",
-        "codeception/module-asserts": "^3.0"
+        "php": ">=7.4 <8.3"
     },
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -22,12 +16,6 @@
     "autoload": {
         "psr-4": {
             "Overclokk\\Cookie\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Overclokk\\Cookie\\Tests\\": "tests/src/",
-            "Overclokk\\Cookie\\Tests\\Unit\\": "tests/unit/"
         }
     }
 }
