@@ -1,6 +1,5 @@
 name: Downgraded Release
 
-# this workflow is triggered only on a new tag
 on:
   push:
     tags:
@@ -21,14 +20,14 @@ jobs:
       - uses: "ramsey/composer-install@v3"
 
       # downgrade /src to PHP 7.4
-      - run: vendor/bin/rector process src --config build/rector-74.php --ansi
-      - run: vendor/bin/ecs check src --fix --ansi
+      - run: vendor/bin/rector process --config build/rector-74.php --ansi
+      - run: vendor/bin/ecs --fix --ansi
 
       # copy PHP 7.4 composer
       - run: cp build/composer-74.json composer.json
 
       # clear the dev files
-      - run: rm -rf .build .github tests ecs.php
+      - run: rm -rf .build .docker .github tests ecs.php .gitattributes .gitignore codeception.dist.yml example.php rectors.php
 
       # publish to the same repository with a new tag
       - name: "Tag Downgraded Code"
