@@ -10,11 +10,10 @@ $cookieName = 'cookie_name';
 $_COOKIE[$cookieName] = 'cookie_value';
 
 $cookie = new Cookie($_COOKIE);
-$cookieValue = $cookie->get($cookieName);
-
-\var_dump($cookieValue === $_COOKIE[$cookieName]);
+$getCookieValue = $cookie->get($cookieName);
 
 $cookie->set($cookieName, 'new_cookie_value');
-$cookieValue = $cookie->get($cookieName);
+$secondGetCookieValue = $cookie->get($cookieName);
 
-\var_dump($cookieValue === $_COOKIE[$cookieName]);
+\var_dump($getCookieValue === $_COOKIE[$cookieName]);
+\var_dump($secondGetCookieValue === $_COOKIE[$cookieName]);
