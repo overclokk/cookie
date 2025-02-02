@@ -44,20 +44,20 @@ jobs:
           git tag "${GITHUB_REF#refs/tags/}" -f
           git push origin "${GITHUB_REF#refs/tags/}" -f
 
-    cleanup_on_failure:
-      runs-on: ubuntu-latest
-      needs: downgrade_release
-      if: failure()
-      steps:
-        - uses: "actions/checkout@v4"
-        - run: |
-            git config user.email "action@github.com"
-            git config user.name "GitHub Action"
-        - name: "Delete Tag and Release"
-          run: |
-            TAG_NAME="${GITHUB_REF#refs/tags/}"
-            echo "Deleting tag ${TAG_NAME}"
-            git tag -d "${TAG_NAME}"
-            git push --delete origin "${TAG_NAME}"
-            echo "Deleting release ${TAG_NAME}"
-            gh release delete "${TAG_NAME}" --yes
+  cleanup_on_failure:
+    runs-on: ubuntu-latest
+    needs: downgrade_release
+    if: failure()
+    steps:
+      - uses: "actions/checkout@v4"
+      - run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+      - name: "Delete Tag and Release"
+        run: |
+          TAG_NAME="${GITHUB_REF#refs/tags/}"
+          echo "Deleting tag ${TAG_NAME}"
+          git tag -d "${TAG_NAME}"
+          git push --delete origin "${TAG_NAME}"
+          echo "Deleting release ${TAG_NAME}"
+          gh release delete "${TAG_NAME}" --yes
