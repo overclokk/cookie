@@ -2,7 +2,7 @@
     "name": "overclokk/cookie",
     "description": "A simple and light cookie manager class",
     "require": {
-        "php": ">=7.4 <8.3"
+        "php": ">=7.4 <8.4"
     },
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -16,6 +16,11 @@
     "autoload": {
         "psr-4": {
             "Overclokk\\Cookie\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }
 }

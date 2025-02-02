@@ -10,8 +10,6 @@ use Overclokk\Cookie\Cookie_Interface;
 
 final class CookieTest extends Unit
 {
-    public $cookie;
-
     private static string $name = 'test';
 
     private static string $value = 'value';
@@ -48,17 +46,19 @@ final class CookieTest extends Unit
 
     public function testGetItShouldBeReturnSelfValue(): void
     {
-        $this->cookie = new Cookie([
+        $cookie = new Cookie([
             self::$name => self::$value,
         ]);
-        $this->assertEquals(self::$value, $this->cookie->get(self::$name), "Cookie doesn't set.");
+        $this->assertEquals(self::$value, $cookie->get(self::$name), "Cookie doesn't set.");
     }
 
+    #[\Override]
     // phpcs:ignore
     protected function _before(): void
     {
     }
 
+    #[\Override]
     // phpcs:ignore
     protected function _after(): void
     {
